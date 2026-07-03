@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="MM Profile Interio - Best range of aluminium profiles, sliding doors, decorative glass, toughened glass, aluminium bars & LED mirrors. GST registered manufacturer in India." />
+  <meta name="keywords" content="aluminium profile, sliding door, decorative glass, toughened glass, LED mirror, MM Profile Interio" />
+  <meta property="og:title" content="MM Profile Interio | Aluminium & Glass Design Solutions" />
+  <meta property="og:description" content="Premium aluminium and glass designer door manufacturing company." />
+  <title>MM Profile Interio | Aluminium & Glass Design Solutions</title>
+  <link rel="icon" type="image/png" href="assets/images/logo.png" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/themes.css" />
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <!-- Firebase SDK (for theme sync across all visitors) -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+  <script src="assets/js/firebase-config.js"></script>
+  <script src="assets/js/firebase-db.js"></script>
+  <!-- Dynamic content & theme loader -->
+  <script src="assets/js/dynamic.js"></script>
+</head>
+<body>
+
+  <!-- Festive Hanging Board Banner -->
+  <div id="festive-banner">
+    <!-- The entire assembly swings as one unit -->
+    <div class="fb-hang-wrap">
+
+      <!-- Two chains with nail heads at top -->
+      <div class="fb-ropes-row">
+        <div class="fb-rope">
+          <div class="fb-nail-head"></div>
+          <div class="fb-rope-cord">
+            <div class="fb-link"></div>
+            <div class="fb-link fb-link-h"></div>
+            <div class="fb-link"></div>
+          </div>
+        </div>
+        <div class="fb-rope">
+          <div class="fb-nail-head"></div>
+          <div class="fb-rope-cord">
+            <div class="fb-link"></div>
+            <div class="fb-link fb-link-h"></div>
+            <div class="fb-link"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- The sign board itself -->
+      <div class="fb-board">
+        <!-- decorative screws at top corners -->
+        <div class="fb-screw fb-screw-l"></div>
+        <div class="fb-screw fb-screw-r"></div>
+
+        <!-- Board content -->
+        <div class="fb-board-content">
+          <span class="fb-deco fb-deco-l">✨</span>
+          <span class="fb-text"></span>
+          <span class="fb-deco fb-deco-r">✨</span>
+        </div>
+
+        <!-- Close button -->
+        <button class="fb-close" id="fb-close-btn" aria-label="Close">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Theme Particles -->
+  <div id="theme-particles"></div>
+
+  <!-- Background Grid -->
+  <div class="bg-grid"></div>
+
+  <!-- ===== INTRO OVERLAY ===== -->
+  <div id="intro-overlay">
+    <div class="intro-logo-wrap">
+      <div class="intro-rings">
+        <div class="intro-ring"></div>
+        <div class="intro-ring"></div>
+        <div class="intro-ring"></div>
+      </div>
+      <img src="assets/images/logo.png" alt="MM Profile Interio Logo" class="intro-logo" />
+    </div>
+    <div class="intro-company-name">MM Profile Interio</div>
+    <div class="intro-tagline">Aluminium &amp; Glass Design Solutions</div>
+    <div class="intro-gst-badge">
+      <i class="fa-solid fa-shield-halved" style="color: var(--gold); font-size: 0.8rem;"></i>
+      <span>GST Registered Manufacturer</span>
+    </div>
+    <div class="intro-progress">
+      <div class="intro-progress-bar"></div>
+    </div>
+  </div>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="index.html" class="nav-logo" id="nav-home">
+          <img src="assets/images/logo.png" alt="MM Profile Interio" />
+          <div class="nav-logo-text">
+            <span class="nav-logo-name">MM Profile Interio</span>
+            <span class="nav-logo-tag">GST Registered ✦ Est. 2024</span>
+          </div>
+        </a>
+
+        <ul class="nav-links">
+          <li><a href="#hero" id="nav-link-home">Home</a></li>
+          <li><a href="#products" id="nav-link-products">Products</a></li>
+          <li><a href="#our-works" id="nav-link-works">Our Works</a></li>
+          <li><a href="#about" id="nav-link-about">About Us</a></li>
+          <li><a href="#why-us" id="nav-link-why">Why Us</a></li>
+          <li><a href="#contact" id="nav-link-contact" class="nav-cta">Contact</a></li>
+        </ul>
+
+        <button class="hamburger" id="hamburger" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Nav -->
+  <div class="mobile-nav" id="mobileNav">
+    <button class="mobile-nav-close" id="mobileClose"><i class="fa-solid fa-xmark"></i></button>
+    <a href="#hero">Home</a>
+    <a href="#products">Products</a>
+    <a href="#our-works">Our Works</a>
+    <a href="#about">About Us</a>
+    <a href="#why-us">Why Us</a>
+    <a href="#contact">Contact</a>
+  </div>
+
+  <!-- ===== HERO SECTION ===== -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="container">
+      <div class="hero-inner">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+            GST Registered Manufacturer · Est. 2024
+          </div>
+
+          <h1 class="hero-title">
+            <span class="line-1">Premium Aluminium</span>
+            <span class="line-2">&amp; Glass Designs</span>
+            <span class="line-3">Crafted for Modern Living</span>
+          </h1>
+
+          <p class="hero-desc">
+            MM Profile Interio provides you the best range of aluminium profiles, sliding doors, decorative glass, toughened glass, aluminium bars &amp; LED mirrors — with effective &amp; timely delivery.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#products" class="btn-primary" id="hero-explore-btn">
+              <i class="fa-solid fa-layer-group"></i>
+              Explore Products
+            </a>
+            <a href="#about" class="btn-outline" id="hero-about-btn">
+              <i class="fa-solid fa-circle-info"></i>
+              About Us
+            </a>
+          </div>
+
+          <div class="hero-stats">
+            <div class="hero-stat">
+              <div class="hero-stat-value" data-count="6" data-suffix="+">0+</div>
+              <div class="hero-stat-label">Product Lines</div>
+            </div>
+            <div class="hero-stat">
+              <div class="hero-stat-value" data-count="10" data-suffix="+">0+</div>
+              <div class="hero-stat-label">Team Members</div>
+            </div>
+            <div class="hero-stat">
+              <div class="hero-stat-value" data-count="100" data-suffix="%">0%</div>
+              <div class="hero-stat-label">GST Compliant</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="hero-logo-display">
+            <div class="hero-logo-glow"></div>
+            <div class="hero-logo-ring"></div>
+            <div class="hero-logo-ring"></div>
+            <img src="assets/images/logo.png" alt="MM Profile Interio" class="hero-logo-img" />
+
+            <div class="hero-float-cards">
+              <div class="hero-float-card">
+                <div class="fc-icon">🏭</div>
+                <div class="fc-text">
+                  <span class="fc-label">Business Type</span>
+                  <span class="fc-value">Manufacturer</span>
+                </div>
+              </div>
+              <div class="hero-float-card">
+                <div class="fc-icon">✅</div>
+                <div class="fc-text">
+                  <span class="fc-label">Legal Status</span>
+                  <span class="fc-value">Partnership Firm</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PRODUCTS SECTION ===== -->
+  <section id="products">
+    <div class="container">
+      <div class="products-header reveal">
+        <div class="section-tag"><i class="fa-solid fa-cubes-stacked"></i> Our Products</div>
+        <h2 class="section-title">Premium Range of <span>Aluminium &amp; Glass</span></h2>
+        <p class="section-subtitle">Explore our curated collection of high-quality products designed for modern interiors and architecture.</p>
+      </div>
+
+      <div class="products-grid">
+
+        <!-- Product 1: Aluminium Profile -->
+        <div class="product-card reveal reveal-delay-1" id="product-aluminium-profile">
+          <div class="product-card-img-wrap">
+            <img src="assets/images/aluminium_profile.png" alt="Aluminium Profile" class="product-card-img" />
+            <div class="product-card-overlay"></div>
+            <div class="product-card-badge">Best Seller</div>
+          </div>
+          <div class="product-card-body">
+            <div class="product-card-title">Aluminium Profile</div>
+            <p class="product-card-desc">High-strength extruded aluminium profiles available in multiple finishes. Perfect for door frames, partitions, and architectural applications.</p>
+            <a href="#contact" class="product-card-link" onclick="document.getElementById('pi-product')&&(document.getElementById('pi-product').value=this.closest('.product-card').querySelector('.product-card-title').textContent)">Enquire Now <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <!-- Product 2: Sliding Door -->
+        <div class="product-card reveal reveal-delay-2" id="product-sliding-door">
+          <div class="product-card-img-wrap">
+            <img src="assets/images/sliding_door.png" alt="Sliding Door" class="product-card-img" />
+            <div class="product-card-overlay"></div>
+            <div class="product-card-badge">Premium</div>
+          </div>
+          <div class="product-card-body">
+            <div class="product-card-title">Sliding Door</div>
+            <p class="product-card-desc">Sleek and smooth aluminium sliding doors with precision-engineered tracks. Space-saving design with a premium aesthetic for homes and offices.</p>
+            <a href="#contact" class="product-card-link" onclick="document.getElementById('pi-product')&&(document.getElementById('pi-product').value=this.closest('.product-card').querySelector('.product-card-title').textContent)">Enquire Now <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <!-- Product 3: Decorative Glass -->
+        <div class="product-card reveal reveal-delay-3" id="product-decorative-glass">
+          <div class="product-card-img-wrap">
+            <img src="assets/images/decorative_glass.png" alt="Decorative Glass" class="product-card-img" />
+            <div class="product-card-overlay"></div>
+            <div class="product-card-badge">Trending</div>
+          </div>
+          <div class="product-card-body">
+            <div class="product-card-title">Decorative Glass</div>
+            <p class="product-card-desc">Beautifully crafted decorative glass panels with artistic patterns, textures, and finishes. Ideal for doors, partitions, and feature walls.</p>
+            <a href="#contact" class="product-card-link" onclick="document.getElementById('pi-product')&&(document.getElementById('pi-product').value=this.closest('.product-card').querySelector('.product-card-title').textContent)">Enquire Now <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <!-- Product 4: Toughened Glass -->
+        <div class="product-card reveal reveal-delay-1" id="product-toughened-glass">
+          <div class="product-card-img-wrap">
+            <img src="assets/images/toughened_glass.png" alt="Toughened Glass" class="product-card-img" />
+            <div class="product-card-overlay"></div>
+            <div class="product-card-badge">Safety Grade</div>
+          </div>
+          <div class="product-card-body">
+            <div class="product-card-title">Toughened Glass</div>
+            <p class="product-card-desc">Safety-certified toughened glass that is 4–5x stronger than regular glass. Crystal clear finish with superior impact resistance for all applications.</p>
+            <a href="#contact" class="product-card-link" onclick="document.getElementById('pi-product')&&(document.getElementById('pi-product').value=this.closest('.product-card').querySelector('.product-card-title').textContent)">Enquire Now <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <!-- Product 5: Aluminium Bar -->
+        <div class="product-card reveal reveal-delay-2" id="product-aluminium-bar">
+          <div class="product-card-img-wrap">
+            <img src="assets/images/aluminium_bar.png" alt="Aluminium Bar" class="product-card-img" />
+            <div class="product-card-overlay"></div>
+            <div class="product-card-badge">Industrial</div>
+          </div>
+          <div class="product-card-body">
+            <div class="product-card-title">Aluminium Bar</div>
+            <p class="product-card-desc">Precision-cut aluminium bars and rods with excellent corrosion resistance. Versatile material for construction, manufacturing, and design applications.</p>
+            <a href="#contact" class="product-card-link" onclick="document.getElementById('pi-product')&&(document.getElementById('pi-product').value=this.closest('.product-card').querySelector('.product-card-title').textContent)">Enquire Now <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+        <!-- Product 6: LED Mirror -->
+        <div class="product-card reveal reveal-delay-3" id="product-led-mirror">
+          <div class="product-card-img-wrap">
+            <img src="assets/images/led_mirror.png" alt="LED Mirror" class="product-card-img" />
+            <div class="product-card-overlay"></div>
+            <div class="product-card-badge">Luxury</div>
+          </div>
+          <div class="product-card-body">
+            <div class="product-card-title">LED Mirror</div>
+            <p class="product-card-desc">Premium LED backlit mirrors with aluminium frames delivering elegant, even lighting. Perfect for bathrooms, dressing rooms, salons, and modern interiors.</p>
+            <a href="#contact" class="product-card-link" onclick="document.getElementById('pi-product')&&(document.getElementById('pi-product').value=this.closest('.product-card').querySelector('.product-card-title').textContent)">Enquire Now <i class="fa-solid fa-arrow-right"></i></a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT SECTION ===== -->
+  <section id="about">
+    <div class="container">
+      <div class="about-inner">
+
+        <div class="about-visual reveal">
+          <div class="about-logo-frame">
+            <div class="about-logo-bg">
+              <div class="about-logo-pattern"></div>
+              <img src="assets/images/logo.png" alt="MM Profile Interio" class="about-logo-img" />
+            </div>
+            <div class="about-info-cards">
+              <div class="about-info-card">
+                <div class="aic-icon">🏭</div>
+                <div>
+                  <div class="aic-label">Nature of Business</div>
+                  <div class="aic-value">Manufacturer</div>
+                </div>
+              </div>
+              <div class="about-info-card">
+                <div class="aic-icon">⚖️</div>
+                <div>
+                  <div class="aic-label">Legal Status</div>
+                  <div class="aic-value">Partnership Firm</div>
+                </div>
+              </div>
+              <div class="about-info-card">
+                <div class="aic-icon">👥</div>
+                <div>
+                  <div class="aic-label">Total Employees</div>
+                  <div class="aic-value">Upto 10 People</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-content reveal reveal-delay-2">
+          <div class="section-tag"><i class="fa-solid fa-building"></i> About Us</div>
+          <h2 class="section-title">Crafting Excellence in <span>Aluminium &amp; Glass</span></h2>
+
+          <p class="about-desc">
+            MM Profile Interio is a GST-registered partnership firm dedicated to manufacturing and supplying the finest aluminium and glass products in India. Since our establishment in 2024, we have been committed to delivering premium-quality solutions that combine beauty, strength, and functionality.
+          </p>
+
+          <div class="about-features">
+            <div class="about-feature">
+              <div class="about-feature-dot"></div>
+              Precision-engineered aluminium profiles and frames
+            </div>
+            <div class="about-feature">
+              <div class="about-feature-dot"></div>
+              Designer and toughened glass panels for safety &amp; aesthetics
+            </div>
+            <div class="about-feature">
+              <div class="about-feature-dot"></div>
+              LED mirrors and aluminium bars for modern interiors
+            </div>
+            <div class="about-feature">
+              <div class="about-feature-dot"></div>
+              Timely delivery with quality assurance on every product
+            </div>
+            <div class="about-feature">
+              <div class="about-feature-dot"></div>
+              Fully GST-compliant with transparent billing &amp; invoicing
+            </div>
+          </div>
+
+          <div class="gst-info-box">
+            <div class="gst-item">
+              <div class="gst-label">GST Number</div>
+              <div class="gst-value gold">29**********1ZX</div>
+            </div>
+            <div class="gst-item">
+              <div class="gst-label">GST Registration</div>
+              <div class="gst-value">2024</div>
+            </div>
+            <div class="gst-item">
+              <div class="gst-label">Business Type</div>
+              <div class="gst-value">Manufacturer</div>
+            </div>
+            <div class="gst-item">
+              <div class="gst-label">Legal Status</div>
+              <div class="gst-value">Partnership Firm</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== OUR WORKS SECTION ===== -->
+  <section id="our-works">
+    <div class="container">
+      <div class="works-header reveal">
+        <div class="section-tag"><i class="fa-solid fa-images"></i> Our Works</div>
+        <h2 class="section-title">Projects We're <span>Proud Of</span></h2>
+        <p class="section-subtitle">A glimpse of our craftsmanship — real projects delivered to real clients with precision and quality.</p>
+      </div>
+
+      <div class="works-grid" id="works-grid">
+        <!-- Works loaded dynamically from admin panel -->
+        <div class="works-empty" id="works-empty">
+          <div class="works-empty-icon">🏗️</div>
+          <div class="works-empty-title">Projects Coming Soon</div>
+          <p class="works-empty-desc">Our completed project gallery will be updated here. Check back soon!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== WHY CHOOSE US ===== -->
+  <section id="why-us">
+    <div class="container">
+      <div class="why-header reveal">
+        <div class="section-tag"><i class="fa-solid fa-star"></i> Why Choose Us</div>
+        <h2 class="section-title">The MM Profile <span>Advantage</span></h2>
+        <p class="section-subtitle" style="margin: 0 auto;">We go beyond just products — we deliver complete design solutions with a focus on quality, reliability, and customer satisfaction.</p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card reveal reveal-delay-1" id="feature-quality">
+          <div class="feature-icon">🏆</div>
+          <div class="feature-title">Premium Quality</div>
+          <p class="feature-desc">All our products undergo rigorous quality checks to ensure the highest standards of durability and finish.</p>
+        </div>
+        <div class="feature-card reveal reveal-delay-2" id="feature-delivery">
+          <div class="feature-icon">🚀</div>
+          <div class="feature-title">Timely Delivery</div>
+          <p class="feature-desc">We respect deadlines. Our logistics ensure your products arrive on time, every time, without compromise.</p>
+        </div>
+        <div class="feature-card reveal reveal-delay-3" id="feature-gst">
+          <div class="feature-icon">📋</div>
+          <div class="feature-title">GST Compliant</div>
+          <p class="feature-desc">Fully registered with GST. All transactions are transparent with proper invoicing and documentation.</p>
+        </div>
+        <div class="feature-card reveal reveal-delay-4" id="feature-design">
+          <div class="feature-icon">✨</div>
+          <div class="feature-title">Custom Designs</div>
+          <p class="feature-desc">We work with you to create customised solutions that perfectly match your design vision and requirements.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA SECTION ===== -->
+  <section id="cta">
+    <div class="container">
+      <div class="cta-box reveal" id="cta-box">
+        <div class="cta-title">Ready to Transform Your Space?</div>
+        <p class="cta-subtitle">Contact us today for a free consultation and quote on your aluminium &amp; glass requirements.</p>
+        <div class="cta-actions">
+          <a href="tel:+91XXXXXXXXXX" class="btn-primary" id="cta-call-btn">
+            <i class="fa-solid fa-phone"></i>
+            Call Us Now
+          </a>
+          <a href="https://wa.me/91XXXXXXXXXX" target="_blank" class="btn-outline" id="cta-whatsapp-btn">
+            <i class="fa-brands fa-whatsapp"></i>
+            WhatsApp Us
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT SECTION ===== -->
+  <section id="contact">
+    <div class="container">
+      <div style="text-align:center;margin-bottom:60px;" class="reveal">
+        <div class="section-tag"><i class="fa-solid fa-envelope"></i> Contact Us</div>
+        <h2 class="section-title">Get in <span>Touch</span></h2>
+        <p class="section-subtitle" style="margin:0 auto;">Have a project in mind? Send us your requirements and we'll get back to you with the best solution.</p>
+      </div>
+
+      <div class="contact-inner">
+        <!-- Contact Form -->
+        <div class="reveal">
+          <div class="contact-form-wrap">
+            <div class="contact-form-title">Send an Enquiry</div>
+            <p class="contact-form-sub">Fill in the details below and our team will reach out to you shortly.</p>
+
+            <form id="contact-form">
+              <div class="cf-row">
+                <div class="cf-group">
+                  <label class="cf-label" for="ci-name">Your Name *</label>
+                  <input class="cf-input" id="ci-name" type="text" placeholder="e.g. Rahul Sharma" required />
+                </div>
+                <div class="cf-group">
+                  <label class="cf-label" for="ci-phone">Phone Number *</label>
+                  <input class="cf-input" id="ci-phone" type="tel" placeholder="+91 XXXXX XXXXX" required />
+                </div>
+              </div>
+              <div class="cf-group">
+                <label class="cf-label" for="ci-email">Email Address</label>
+                <input class="cf-input" id="ci-email" type="email" placeholder="your@email.com" />
+              </div>
+              <div class="cf-group">
+                <label class="cf-label" for="pi-product">Product Interest</label>
+                <select class="cf-select" id="pi-product">
+                  <option value="">— Select a Product —</option>
+                  <option value="Aluminium Profile">Aluminium Profile</option>
+                  <option value="Sliding Door">Sliding Door</option>
+                  <option value="Decorative Glass">Decorative Glass</option>
+                  <option value="Toughened Glass">Toughened Glass</option>
+                  <option value="Aluminium Bar">Aluminium Bar</option>
+                  <option value="LED Mirror">LED Mirror</option>
+                  <option value="Other / Multiple">Other / Multiple</option>
+                </select>
+              </div>
+              <div class="cf-group">
+                <label class="cf-label" for="ci-message">Message</label>
+                <textarea class="cf-textarea" id="ci-message" placeholder="Describe your requirements, dimensions, quantity, etc."></textarea>
+              </div>
+              <button type="submit" class="btn-primary" style="width:100%;justify-content:center;border-radius:12px;padding:14px;" id="contact-submit-btn">
+                <i class="fa-solid fa-paper-plane"></i> Send Enquiry
+              </button>
+            </form>
+
+            <div class="contact-form-success" id="contact-success">
+              <div class="cfs-icon">✅</div>
+              <div class="cfs-title">Enquiry Sent!</div>
+              <p class="cfs-desc">Thank you for reaching out. Our team will contact you within 24 hours.</p>
+              <button onclick="document.getElementById('contact-success').classList.remove('show');document.getElementById('contact-form').style.display='block';" class="btn-outline" style="margin-top:16px;">Send Another</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="contact-info reveal reveal-delay-2">
+          <div class="contact-info-card">
+            <div class="cic-icon"><i class="fa-solid fa-phone"></i></div>
+            <div>
+              <div class="cic-label">Phone / WhatsApp</div>
+              <div class="cic-value"><a href="tel:+91XXXXXXXXXX">+91 XXXX XXXXXX</a></div>
+            </div>
+          </div>
+          <div class="contact-info-card">
+            <div class="cic-icon"><i class="fa-solid fa-envelope"></i></div>
+            <div>
+              <div class="cic-label">Email</div>
+              <div class="cic-value"><a href="mailto:info@mmprofileinterio.com">info@mmprofileinterio.com</a></div>
+            </div>
+          </div>
+          <div class="contact-info-card">
+            <div class="cic-icon"><i class="fa-solid fa-location-dot"></i></div>
+            <div>
+              <div class="cic-label">Location</div>
+              <div class="cic-value">India</div>
+            </div>
+          </div>
+          <div class="contact-info-card">
+            <div class="cic-icon"><i class="fa-solid fa-shield-halved" style="color:var(--gold);"></i></div>
+            <div>
+              <div class="cic-label">GST Number</div>
+              <div class="cic-value" style="color:var(--gold);">29**********1ZX</div>
+            </div>
+          </div>
+          <div class="contact-info-card">
+            <div class="cic-icon"><i class="fa-solid fa-clock"></i></div>
+            <div>
+              <div class="cic-label">Business Hours</div>
+              <div class="cic-value">Mon – Sat: 9:00 AM – 7:00 PM</div>
+            </div>
+          </div>
+          <div class="contact-social-wrap">
+            <div class="contact-social-title">Follow Us On</div>
+            <div class="social-links">
+              <a href="https://facebook.com" target="_blank" class="social-link facebook" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+              <a href="https://instagram.com" target="_blank" class="social-link instagram" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+              <a href="https://wa.me/91XXXXXXXXXX" target="_blank" class="social-link whatsapp" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+              <a href="https://youtube.com" target="_blank" class="social-link youtube" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+              <a href="https://twitter.com" target="_blank" class="social-link twitter" aria-label="X/Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+              <a href="https://linkedin.com" target="_blank" class="social-link linkedin" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer id="footer">
+    <div class="container">
+      <div class="footer-grid">
+
+        <!-- Brand -->
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <img src="assets/images/logo.png" alt="MM Profile Interio" />
+            <div class="footer-logo-name">MM Profile Interio</div>
+          </div>
+          <p class="footer-brand-desc">
+            MM Profile Interio provides you the best range of aluminium profiles, sliding doors, decorative glass, toughened glass, aluminium bars &amp; LED mirrors with effective &amp; timely delivery.
+          </p>
+          <div class="gst-badge-footer">
+            <i class="fa-solid fa-shield-halved" style="color: var(--gold); font-size: 0.8rem;"></i>
+            <span>GST No: 29**********1ZX</span>
+          </div>
+
+          <!-- Social Media Links -->
+          <div class="social-links" id="social-links-section">
+            <a href="https://facebook.com" target="_blank" class="social-link facebook" id="social-facebook" title="Facebook" aria-label="Follow us on Facebook">
+              <i class="fa-brands fa-facebook-f"></i>
+            </a>
+            <a href="https://instagram.com" target="_blank" class="social-link instagram" id="social-instagram" title="Instagram" aria-label="Follow us on Instagram">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a href="https://wa.me/91XXXXXXXXXX" target="_blank" class="social-link whatsapp" id="social-whatsapp" title="WhatsApp" aria-label="Chat on WhatsApp">
+              <i class="fa-brands fa-whatsapp"></i>
+            </a>
+            <a href="https://youtube.com" target="_blank" class="social-link youtube" id="social-youtube" title="YouTube" aria-label="Subscribe on YouTube">
+              <i class="fa-brands fa-youtube"></i>
+            </a>
+            <a href="https://twitter.com" target="_blank" class="social-link twitter" id="social-twitter" title="X / Twitter" aria-label="Follow us on X">
+              <i class="fa-brands fa-x-twitter"></i>
+            </a>
+            <a href="https://linkedin.com" target="_blank" class="social-link linkedin" id="social-linkedin" title="LinkedIn" aria-label="Connect on LinkedIn">
+              <i class="fa-brands fa-linkedin-in"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Products -->
+        <div>
+          <div class="footer-col-title">Products</div>
+          <ul class="footer-links">
+            <li><a href="#products"><i class="fa-solid fa-chevron-right" style="font-size:0.65rem;"></i> Aluminium Profile</a></li>
+            <li><a href="#products"><i class="fa-solid fa-chevron-right" style="font-size:0.65rem;"></i> Sliding Door</a></li>
+            <li><a href="#products"><i class="fa-solid fa-chevron-right" style="font-size:0.65rem;"></i> Decorative Glass</a></li>
+            <li><a href="#products"><i class="fa-solid fa-chevron-right" style="font-size:0.65rem;"></i> Toughened Glass</a></li>
+            <li><a href="#products"><i class="fa-solid fa-chevron-right" style="font-size:0.65rem;"></i> Aluminium Bar</a></li>
+            <li><a href="#products"><i class="fa-solid fa-chevron-right" style="font-size:0.65rem;"></i> LED Mirror</a></li>
+          </ul>
+        </div>
+
+        <!-- Company -->
+        <div>
+          <div class="footer-col-title">Company</div>
+          <ul class="footer-links">
+            <li><a href="#about"><i class="fa-solid fa-chevron-right" style="font-size:0.65rem;"></i> About Us</a></li>
+            <li><a href="#why-us"><i class="fa-solid fa-chevron-right" style="font-size:0.65rem;"></i> Why Choose Us</a></li>
+            <li><a href="privacy-policy.html" id="footer-privacy-link"><i class="fa-solid fa-chevron-right" style="font-size:0.65rem;"></i> Privacy Policy</a></li>
+            <li><a href="terms-conditions.html" id="footer-terms-link"><i class="fa-solid fa-chevron-right" style="font-size:0.65rem;"></i> Terms &amp; Conditions</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact -->
+        <div>
+          <div class="footer-col-title">Contact</div>
+          <ul class="footer-links">
+            <li>
+              <a href="tel:+91XXXXXXXXXX" id="footer-phone">
+                <i class="fa-solid fa-phone" style="color: var(--primary-light); font-size:0.8rem;"></i>
+                +91 XXXX XXXXXX
+              </a>
+            </li>
+            <li>
+              <a href="mailto:info@mmprofileinterio.com" id="footer-email">
+                <i class="fa-solid fa-envelope" style="color: var(--primary-light); font-size:0.8rem;"></i>
+                info@mmprofileinterio.com
+              </a>
+            </li>
+            <li>
+              <a href="#" id="footer-address">
+                <i class="fa-solid fa-location-dot" style="color: var(--primary-light); font-size:0.8rem;"></i>
+                India
+              </a>
+            </li>
+            <li style="margin-top: 12px;">
+              <span style="font-size:0.75rem; color: var(--text-muted);">GST Reg. Date:</span>
+              <span style="font-size:0.8rem; color: var(--gold); font-weight:600; margin-left:4px;">2024</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="footer-bottom">
+        <div class="footer-bottom-text">
+          © <span class="current-year"></span> MM Profile Interio. All Rights Reserved. | GST: 29**********1ZX
+        </div>
+        <div class="footer-bottom-links">
+          <a href="privacy-policy.html" id="bottom-privacy">Privacy Policy</a>
+          <a href="terms-conditions.html" id="bottom-terms">Terms &amp; Conditions</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+  <script>
+    // Contact form handler
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      var btn = document.getElementById('contact-submit-btn');
+      btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
+      btn.disabled = true;
+      setTimeout(function() {
+        document.getElementById('contact-form').style.display = 'none';
+        document.getElementById('contact-success').classList.add('show');
+        btn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Send Enquiry';
+        btn.disabled = false;
+      }, 1200);
+    });
+    // Restore form when clicking Send Another
+    document.addEventListener('click', function(e) {
+      if (e.target && e.target.closest('#contact-success button')) {
+        document.getElementById('contact-form').reset();
+      }
+    });
+  </script>
+</body>
+</html>

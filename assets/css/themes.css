@@ -1,0 +1,906 @@
+/* =====================================================
+   MM Profile Interio - Festive Themes
+   Classes applied to <html> element
+   ===================================================== */
+
+/* ===========================
+   HANGING NAME BOARD BANNER
+   =========================== */
+
+/* Opaque container — covers scrolling content behind it */
+#festive-banner {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1100;
+  justify-content: center;
+  align-items: flex-start;
+  /* Solid bg so page content doesn't scroll through */
+  background: var(--dark, #0a0f0b);
+  padding-bottom: 6px;
+}
+#festive-banner.active { display: flex; }
+
+/* The hanging assembly — NO filter here (breaks fixed in webkit) */
+.fb-hang-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: auto;
+  transform-origin: top center;
+  animation: fbPendulum 5s ease-in-out infinite;
+}
+
+@keyframes fbPendulum {
+  0%,100% { transform: rotate(-2deg); }
+  50%      { transform: rotate( 2deg); }
+}
+
+.fb-ropes-row {
+  display: flex;
+  justify-content: space-between;
+  width: 260px;
+  padding: 0 28px;
+}
+
+.fb-rope {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.fb-nail-head {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #f0e0a0 0%, var(--chain-color, #b8942a) 65%, rgba(0,0,0,0.5) 100%);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  border: 1px solid rgba(0,0,0,0.3);
+}
+
+.fb-rope-cord {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.fb-link {
+  width: 6px;
+  height: 9px;
+  border: 2px solid var(--chain-color, #b8942a);
+  border-radius: 50%;
+  background: transparent;
+  margin: -1px 0;
+}
+.fb-link-h { transform: rotate(90deg); width: 9px; height: 6px; }
+
+/* ===== SIGN BOARD ===== */
+.fb-board {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0 40px 0 16px;
+  min-height: 44px;
+  min-width: 260px;
+  max-width: 580px;
+  border-radius: 10px;
+  border: 2px solid var(--board-border, #b8942a);
+  background: var(--board-bg, linear-gradient(145deg, #2a1800, #3d2500));
+  box-shadow:
+    0 6px 20px rgba(0,0,0,0.6),
+    inset 0 1px 0 rgba(255,255,255,0.08),
+    inset 0 -1px 0 rgba(0,0,0,0.35);
+}
+.fb-board::before {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  border-radius: 7px;
+  border: 1px solid rgba(255,255,255,0.05);
+  pointer-events: none;
+}
+
+.fb-screw {
+  position: absolute;
+  top: -6px;
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, rgba(255,255,255,0.45) 0%, var(--board-border, #b8942a) 55%, rgba(0,0,0,0.3) 100%);
+  border: 1px solid rgba(0,0,0,0.3);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+.fb-screw-l { left: 22px; }
+.fb-screw-r { right: 36px; }
+
+.fb-board-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex: 1;
+  white-space: nowrap;
+}
+
+.fb-deco { font-size: 1rem; flex-shrink: 0; }
+
+.fb-text {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 0.82rem;
+  letter-spacing: 0.03em;
+  color: var(--board-text, #fde68a);
+  text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+}
+
+.fb-close {
+  position: absolute;
+  right: 7px; top: 50%;
+  transform: translateY(-50%);
+  width: 22px; height: 22px;
+  background: rgba(0,0,0,0.2);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: var(--board-text, #fde68a);
+  cursor: pointer; font-size: 0.65rem;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s;
+  flex-shrink: 0;
+}
+.fb-close:hover { background: rgba(180,0,0,0.35); }
+
+/* Push navbar + hero below compact banner (nail 10 + chain 22 + board 44 + padding 6 ≈ 82px) */
+html.has-banner .navbar { top: 82px; }
+html.has-banner #hero   { padding-top: 156px; }
+
+/* Per-theme banner backgrounds (opaque, matching body bg) */
+html.theme-ramadan      #festive-banner { background: #06010f; }
+html[class*="theme-eid"]#festive-banner { background: #020f0a; }
+html.theme-diwali       #festive-banner { background: #0f0700; }
+html.theme-holi         #festive-banner { background: #080010; }
+html.theme-christmas    #festive-banner { background: #020b04; }
+html.theme-newyear      #festive-banner { background: #010614; }
+html.theme-independence #festive-banner { background: #080400; }
+
+/* ===================================
+   ██████╗  █████╗ ███╗   ███╗ █████╗ ██████╗  █████╗ ███╗   ██╗
+   ██╔══██╗██╔══██╗████╗ ████║██╔══██╗██╔══██╗██╔══██╗████╗  ██║
+   ██████╔╝███████║██╔████╔██║███████║██║  ██║███████║██╔██╗ ██║
+   ██╔══██╗██╔══██║██║╚██╔╝██║██╔══██║██║  ██║██╔══██║██║╚██╗██║
+   ██║  ██║██║  ██║██║ ╚═╝ ██║██║  ██║██████╔╝██║  ██║██║ ╚████║
+   =================================== */
+html.theme-ramadan {
+  --primary:       #6d28d9;
+  --primary-light: #8b5cf6;
+  --primary-dark:  #4c1d95;
+  --accent:        #fbbf24;
+  --accent-hover:  #f59e0b;
+  --gold:          #fbbf24;
+  --dark:          #06010f;
+  --dark-2:        #0e0519;
+  --dark-3:        #140a24;
+  --surface:       #1a0e30;
+  --surface-2:     #241542;
+  --text-primary:  #f5f0ff;
+  --text-secondary:#c4b5fd;
+  --text-muted:    #7c5fb5;
+  --border:        rgba(109,40,217,0.2);
+  --border-green:  rgba(109,40,217,0.35);
+  --glass:         rgba(26,14,48,0.7);
+  --shadow-green:  0 0 40px rgba(109,40,217,0.35);
+  --shadow-accent: 0 0 30px rgba(251,191,36,0.2);
+}
+/* Starry night sky body */
+html.theme-ramadan body {
+  background: #06010f;
+  background-image:
+    radial-gradient(ellipse 90% 60% at 50% -5%, rgba(109,40,217,0.3) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 10% 80%, rgba(76,29,149,0.15) 0%, transparent 50%),
+    radial-gradient(ellipse 40% 30% at 90% 40%, rgba(251,191,36,0.08) 0%, transparent 50%);
+}
+html.theme-ramadan .hero-bg {
+  background:
+    radial-gradient(ellipse 70% 80% at 50% 0%, rgba(109,40,217,0.25) 0%, transparent 65%),
+    radial-gradient(ellipse 40% 40% at 85% 40%, rgba(251,191,36,0.08) 0%, transparent 50%) !important;
+}
+html.theme-ramadan .bg-grid {
+  background-image:
+    linear-gradient(rgba(109,40,217,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(109,40,217,0.06) 1px, transparent 1px);
+}
+/* Ramadan board: deep purple velvet + gold chains */
+html.theme-ramadan { --chain-color: #fbbf24; }
+html.theme-ramadan .fb-board {
+  background: linear-gradient(145deg, #1a0040 0%, #2d0063 45%, #1e0048 100%) !important;
+  border-color: #fbbf24 !important;
+  box-shadow: 0 8px 30px rgba(109,40,217,0.5), inset 0 1px 0 rgba(251,191,36,0.18), inset 0 -2px 0 rgba(0,0,0,0.5) !important;
+  --board-border: #fbbf24;
+  --board-text: #fbbf24;
+}
+html.theme-ramadan .fb-text { color: #fde68a; text-shadow: 0 0 12px rgba(251,191,36,0.4), 0 1px 3px rgba(0,0,0,0.5) !important; }
+html.theme-ramadan .fb-nail-head { background: radial-gradient(circle at 35% 30%, #fde68a 0%, #b8942a 60%, rgba(0,0,0,0.4) 100%) !important; }
+html.theme-ramadan .fb-screw { background: radial-gradient(circle at 35% 30%, #fde68a, #b8942a, rgba(0,0,0,0.3)) !important; border-color: rgba(0,0,0,0.3) !important; }
+
+html.theme-ramadan .section-title span,
+html.theme-ramadan .nav-logo-name,
+html.theme-ramadan .footer-logo-name,
+html.theme-ramadan .hero-stat-value,
+html.theme-ramadan .hero-title .line-2 {
+  background: linear-gradient(135deg, #c4b5fd, #fbbf24) !important;
+  -webkit-background-clip: text !important; -webkit-text-fill-color: transparent !important; background-clip: text !important;
+}
+html.theme-ramadan .btn-primary,
+html.theme-ramadan .nav-cta {
+  background: linear-gradient(135deg, #4c1d95, #7c3aed) !important;
+  box-shadow: 0 4px 20px rgba(109,40,217,0.5) !important;
+}
+html.theme-ramadan .btn-primary:hover,
+html.theme-ramadan .nav-cta:hover {
+  box-shadow: 0 8px 30px rgba(109,40,217,0.7) !important;
+}
+html.theme-ramadan .section-tag {
+  background: rgba(251,191,36,0.12) !important;
+  border-color: rgba(251,191,36,0.35) !important;
+  color: #fbbf24 !important;
+}
+html.theme-ramadan .hero-logo-glow {
+  background: radial-gradient(circle, rgba(109,40,217,0.45) 0%, transparent 70%) !important;
+}
+html.theme-ramadan .hero-logo-ring {
+  border-color: rgba(109,40,217,0.25) !important;
+}
+html.theme-ramadan .hero-logo-img,
+html.theme-ramadan .about-logo-img {
+  box-shadow: 0 0 80px rgba(109,40,217,0.5), 0 0 160px rgba(109,40,217,0.15) !important;
+}
+html.theme-ramadan .product-card:hover,
+html.theme-ramadan .work-card:hover,
+html.theme-ramadan .feature-card:hover {
+  border-color: #7c3aed !important;
+  box-shadow: 0 0 40px rgba(109,40,217,0.3) !important;
+}
+html.theme-ramadan .about-logo-bg,
+html.theme-ramadan .about-info-card,
+html.theme-ramadan .gst-info-box {
+  border-color: rgba(109,40,217,0.35) !important;
+}
+html.theme-ramadan .cta-box {
+  background: linear-gradient(135deg, #1a0e30, #2e1a50) !important;
+  border-color: #6d28d9 !important;
+}
+html.theme-ramadan .product-card-badge {
+  background: rgba(251,191,36,0.15) !important;
+  border-color: rgba(251,191,36,0.4) !important;
+  color: #fbbf24 !important;
+}
+html.theme-ramadan .about-feature-dot {
+  background: #fbbf24 !important;
+  box-shadow: 0 0 8px rgba(251,191,36,0.5) !important;
+}
+html.theme-ramadan .intro-progress-bar {
+  background: linear-gradient(90deg, #6d28d9, #fbbf24) !important;
+}
+html.theme-ramadan .fc-icon,
+html.theme-ramadan .feature-icon,
+html.theme-ramadan .cic-icon,
+html.theme-ramadan .aic-icon {
+  background: linear-gradient(135deg, #4c1d95, #7c3aed) !important;
+  box-shadow: 0 4px 20px rgba(109,40,217,0.4) !important;
+}
+
+/* ===================================
+   ███████╗██╗██████╗     ███████╗██╗████████╗██████╗
+   ██╔════╝██║██╔══██╗    ██╔════╝██║╚══██╔══╝██╔══██╗
+   █████╗  ██║██║  ██║    █████╗  ██║   ██║   ██████╔╝
+   ██╔══╝  ██║██║  ██║    ██╔══╝  ██║   ██║   ██╔══██╗
+   ███████╗██║██████╔╝    ██║     ██║   ██║   ██║  ██║
+   =================================== */
+html.theme-eid-fitr { }
+html[class*="theme-eid"] {
+  --primary:       #065f46;
+  --primary-light: #10b981;
+  --primary-dark:  #022c22;
+  --accent:        #f59e0b;
+  --accent-hover:  #d97706;
+  --gold:          #f59e0b;
+  --dark:          #020f0a;
+  --dark-2:        #051a12;
+  --dark-3:        #082519;
+  --surface:       #0b2d1e;
+  --surface-2:     #0f3d28;
+  --text-primary:  #ecfdf5;
+  --text-secondary:#6ee7b7;
+  --text-muted:    #34d399;
+  --border:        rgba(6,95,70,0.25);
+  --border-green:  rgba(6,95,70,0.45);
+  --shadow-green:  0 0 40px rgba(6,95,70,0.4);
+}
+html[class*="theme-eid"] body {
+  background: #020f0a;
+  background-image:
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(6,95,70,0.25) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 30% at 90% 70%, rgba(245,158,11,0.07) 0%, transparent 50%);
+}
+html[class*="theme-eid"] .hero-bg {
+  background:
+    radial-gradient(ellipse 70% 70% at 50% 0%, rgba(6,95,70,0.3) 0%, transparent 65%),
+    radial-gradient(ellipse 35% 35% at 80% 50%, rgba(245,158,11,0.08) 0%, transparent 50%) !important;
+}
+/* Eid board: emerald green + gold chains */
+html[class*="theme-eid"] { --chain-color: #f59e0b; }
+html[class*="theme-eid"] .fb-board {
+  background: linear-gradient(145deg, #022c22 0%, #065f46 45%, #033a2c 100%) !important;
+  border-color: #f59e0b !important;
+  box-shadow: 0 8px 30px rgba(6,95,70,0.5), inset 0 1px 0 rgba(245,158,11,0.18), inset 0 -2px 0 rgba(0,0,0,0.5) !important;
+  --board-border: #f59e0b;
+  --board-text: #f59e0b;
+}
+html[class*="theme-eid"] .fb-text { color: #fde68a; text-shadow: 0 0 12px rgba(245,158,11,0.4), 0 1px 3px rgba(0,0,0,0.5) !important; }
+html[class*="theme-eid"] .fb-nail-head { background: radial-gradient(circle at 35% 30%, #fde68a 0%, #d97706 60%, rgba(0,0,0,0.4) 100%) !important; }
+html[class*="theme-eid"] .fb-screw { background: radial-gradient(circle at 35% 30%, #fde68a, #d97706, rgba(0,0,0,0.3)) !important; }
+
+html[class*="theme-eid"] .section-title span,
+html[class*="theme-eid"] .nav-logo-name,
+html[class*="theme-eid"] .footer-logo-name,
+html[class*="theme-eid"] .hero-stat-value,
+html[class*="theme-eid"] .hero-title .line-2 {
+  background: linear-gradient(135deg, #34d399, #f59e0b) !important;
+  -webkit-background-clip: text !important; -webkit-text-fill-color: transparent !important; background-clip: text !important;
+}
+html[class*="theme-eid"] .btn-primary,
+html[class*="theme-eid"] .nav-cta {
+  background: linear-gradient(135deg, #065f46, #10b981) !important;
+  box-shadow: 0 4px 20px rgba(6,95,70,0.5) !important;
+}
+html[class*="theme-eid"] .section-tag {
+  background: rgba(245,158,11,0.12) !important;
+  border-color: rgba(245,158,11,0.35) !important;
+  color: #f59e0b !important;
+}
+html[class*="theme-eid"] .product-card-badge {
+  background: rgba(245,158,11,0.15) !important;
+  border-color: rgba(245,158,11,0.4) !important;
+  color: #f59e0b !important;
+}
+html[class*="theme-eid"] .cta-box {
+  background: linear-gradient(135deg, #0b2d1e, #0f3d28) !important;
+  border-color: #10b981 !important;
+}
+
+/* ===================================
+   ██████╗ ██╗██╗    ██╗ █████╗ ██╗     ██╗
+   ██╔══██╗██║██║    ██║██╔══██╗██║     ██║
+   ██║  ██║██║██║ █╗ ██║███████║██║     ██║
+   ██║  ██║██║██║███╗██║██╔══██║██║     ██║
+   ██████╔╝██║╚███╔███╔╝██║  ██║███████╗██║
+   =================================== */
+html.theme-diwali {
+  --primary:       #b45309;
+  --primary-light: #d97706;
+  --primary-dark:  #78350f;
+  --accent:        #fde68a;
+  --accent-hover:  #fcd34d;
+  --gold:          #fde68a;
+  --dark:          #0f0700;
+  --dark-2:        #1a0f00;
+  --dark-3:        #241600;
+  --surface:       #2a1800;
+  --surface-2:     #3d2500;
+  --text-primary:  #fff8e7;
+  --text-secondary:#fcd34d;
+  --text-muted:    #d97706;
+  --border:        rgba(180,83,9,0.25);
+  --border-green:  rgba(180,83,9,0.4);
+  --shadow-green:  0 0 40px rgba(180,83,9,0.35);
+  --shadow-accent: 0 0 30px rgba(253,230,138,0.2);
+}
+html.theme-diwali body {
+  background: #0f0700;
+  background-image:
+    radial-gradient(ellipse 90% 60% at 50% -5%, rgba(180,83,9,0.3) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 50% at 20% 100%, rgba(120,53,15,0.2) 0%, transparent 55%),
+    radial-gradient(ellipse 40% 30% at 85% 50%, rgba(253,230,138,0.08) 0%, transparent 50%);
+}
+/* Warm amber glow hero */
+html.theme-diwali .hero-bg {
+  background:
+    radial-gradient(ellipse 70% 80% at 50% 0%, rgba(180,83,9,0.35) 0%, transparent 65%),
+    radial-gradient(ellipse 45% 45% at 80% 50%, rgba(253,230,138,0.12) 0%, transparent 55%) !important;
+}
+html.theme-diwali .bg-grid {
+  background-image:
+    linear-gradient(rgba(180,83,9,0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(180,83,9,0.07) 1px, transparent 1px);
+}
+/* Grand golden Diwali banner */
+/* Diwali board: warm amber wood + golden chains */
+html.theme-diwali { --chain-color: #d97706; }
+html.theme-diwali .fb-board {
+  background: linear-gradient(145deg, #3a1c00 0%, #5a2e00 40%, #4a2200 80%, #3a1c00 100%) !important;
+  border-color: #d97706 !important;
+  box-shadow:
+    0 8px 32px rgba(180,83,9,0.6),
+    0 0 20px rgba(253,230,138,0.15),
+    inset 0 1px 0 rgba(253,230,138,0.2),
+    inset 0 -2px 0 rgba(0,0,0,0.5),
+    inset 1px 0 0 rgba(255,180,50,0.08) !important;
+  --board-border: #d97706;
+  --board-text: #fde68a;
+}
+html.theme-diwali .fb-text {
+  color: #fde68a;
+  text-shadow: 0 0 16px rgba(253,230,138,0.5), 0 1px 4px rgba(0,0,0,0.6) !important;
+}
+html.theme-diwali .fb-nail-head { background: radial-gradient(circle at 35% 30%, #fde68a 0%, #b45309 60%, rgba(0,0,0,0.4) 100%) !important; }
+html.theme-diwali .fb-screw { background: radial-gradient(circle at 35% 30%, #fde68a, #b45309, rgba(0,0,0,0.3)) !important; border-color: rgba(0,0,0,0.3) !important; }
+
+html.theme-diwali .section-title span,
+html.theme-diwali .nav-logo-name,
+html.theme-diwali .footer-logo-name,
+html.theme-diwali .hero-stat-value,
+html.theme-diwali .hero-title .line-2 {
+  background: linear-gradient(135deg, #fbbf24, #f97316) !important;
+  -webkit-background-clip: text !important; -webkit-text-fill-color: transparent !important; background-clip: text !important;
+}
+html.theme-diwali .btn-primary,
+html.theme-diwali .nav-cta {
+  background: linear-gradient(135deg, #b45309, #d97706) !important;
+  box-shadow: 0 4px 20px rgba(180,83,9,0.55) !important;
+}
+html.theme-diwali .btn-primary:hover { box-shadow: 0 8px 30px rgba(180,83,9,0.75) !important; }
+html.theme-diwali .section-tag {
+  background: rgba(253,230,138,0.12) !important;
+  border-color: rgba(253,230,138,0.35) !important;
+  color: #fde68a !important;
+}
+html.theme-diwali .hero-logo-glow {
+  background: radial-gradient(circle, rgba(180,83,9,0.5) 0%, transparent 70%) !important;
+}
+html.theme-diwali .hero-logo-img,
+html.theme-diwali .about-logo-img {
+  box-shadow: 0 0 80px rgba(180,83,9,0.6), 0 0 160px rgba(180,83,9,0.2), 0 0 240px rgba(253,230,138,0.1) !important;
+}
+html.theme-diwali .product-card:hover,
+html.theme-diwali .work-card:hover,
+html.theme-diwali .feature-card:hover {
+  border-color: #d97706 !important;
+  box-shadow: 0 0 40px rgba(180,83,9,0.35) !important;
+}
+html.theme-diwali .product-card-badge {
+  background: rgba(253,230,138,0.15) !important;
+  border-color: rgba(253,230,138,0.45) !important;
+  color: #fde68a !important;
+}
+html.theme-diwali .about-feature-dot {
+  background: #fcd34d !important;
+  box-shadow: 0 0 10px rgba(253,230,138,0.6) !important;
+}
+html.theme-diwali .cta-box {
+  background: linear-gradient(135deg, #2a1800, #3d2500) !important;
+  border-color: #b45309 !important;
+}
+html.theme-diwali .cta-box::before {
+  background: radial-gradient(ellipse, rgba(253,230,138,0.12) 0%, transparent 70%) !important;
+}
+html.theme-diwali .fc-icon,
+html.theme-diwali .feature-icon,
+html.theme-diwali .cic-icon,
+html.theme-diwali .aic-icon {
+  background: linear-gradient(135deg, #78350f, #b45309) !important;
+  box-shadow: 0 4px 20px rgba(180,83,9,0.45) !important;
+}
+html.theme-diwali .intro-progress-bar {
+  background: linear-gradient(90deg, #b45309, #fcd34d) !important;
+}
+
+/* ===================================
+   ██╗  ██╗ ██████╗ ██╗     ██╗
+   ██║  ██║██╔═══██╗██║     ██║
+   ███████║██║   ██║██║     ██║
+   ██╔══██║██║   ██║██║     ██║
+   ██║  ██║╚██████╔╝███████╗██║
+   =================================== */
+html.theme-holi {
+  --primary:       #7c3aed;
+  --primary-light: #a855f7;
+  --primary-dark:  #4c1d95;
+  --accent:        #f472b6;
+  --accent-hover:  #ec4899;
+  --gold:          #f472b6;
+  --dark:          #080010;
+  --dark-2:        #10001c;
+  --dark-3:        #180028;
+  --surface:       #1e0030;
+  --surface-2:     #2a0042;
+  --text-primary:  #fdf4ff;
+  --text-secondary:#e879f9;
+  --text-muted:    #a855f7;
+  --border:        rgba(124,58,237,0.25);
+  --border-green:  rgba(124,58,237,0.4);
+  --shadow-green:  0 0 40px rgba(124,58,237,0.35);
+}
+html.theme-holi body {
+  background: #080010;
+  background-image:
+    radial-gradient(ellipse 80% 60% at 30% 0%, rgba(124,58,237,0.2) 0%, transparent 55%),
+    radial-gradient(ellipse 60% 50% at 80% 20%, rgba(244,114,182,0.15) 0%, transparent 50%),
+    radial-gradient(ellipse 50% 40% at 50% 80%, rgba(251,146,60,0.1) 0%, transparent 50%);
+}
+html.theme-holi .hero-bg {
+  background:
+    radial-gradient(ellipse 65% 70% at 50% 0%, rgba(124,58,237,0.25) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 40% at 80% 50%, rgba(244,114,182,0.15) 0%, transparent 50%) !important;
+}
+/* Holi board: dark multicolor rainbow outline */
+html.theme-holi { --chain-color: #a855f7; }
+html.theme-holi .fb-board {
+  background: linear-gradient(145deg, #1a0030 0%, #2a0050 45%, #1e0038 100%) !important;
+  border-color: #f472b6 !important;
+  border-image: linear-gradient(135deg, #7c3aed, #ec4899, #f97316, #22c55e) 1 !important;
+  box-shadow: 0 8px 30px rgba(124,58,237,0.5), 0 0 20px rgba(244,114,182,0.2), inset 0 1px 0 rgba(244,114,182,0.15) !important;
+  --board-text: #f472b6;
+}
+html.theme-holi .fb-text {
+  color: #fdf4ff;
+  text-shadow: 0 0 12px rgba(244,114,182,0.5), 0 1px 3px rgba(0,0,0,0.5) !important;
+  background: linear-gradient(90deg, #a855f7, #f472b6, #fb923c);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+html.theme-holi .fb-nail-head { background: radial-gradient(circle at 35% 30%, #e879f9 0%, #7c3aed 60%, rgba(0,0,0,0.4) 100%) !important; }
+html.theme-holi .fb-screw { background: radial-gradient(circle at 35% 30%, #f472b6, #7c3aed, rgba(0,0,0,0.3)) !important; }
+@keyframes holiBannerAnim {
+  0%   { border-color: #7c3aed; }
+  25%  { border-color: #ec4899; }
+  50%  { border-color: #f97316; }
+  75%  { border-color: #22c55e; }
+  100% { border-color: #7c3aed; }
+}
+
+html.theme-holi .section-title span,
+html.theme-holi .nav-logo-name,
+html.theme-holi .footer-logo-name,
+html.theme-holi .hero-stat-value,
+html.theme-holi .hero-title .line-2 {
+  background: linear-gradient(135deg, #a855f7, #f472b6, #fb923c) !important;
+  -webkit-background-clip: text !important; -webkit-text-fill-color: transparent !important; background-clip: text !important;
+}
+html.theme-holi .btn-primary,
+html.theme-holi .nav-cta {
+  background: linear-gradient(135deg, #7c3aed, #ec4899) !important;
+  box-shadow: 0 4px 20px rgba(124,58,237,0.5) !important;
+}
+html.theme-holi .section-tag {
+  background: rgba(244,114,182,0.12) !important;
+  border-color: rgba(244,114,182,0.4) !important;
+  color: #f472b6 !important;
+}
+html.theme-holi .product-card:hover,
+html.theme-holi .work-card:hover {
+  border-color: #a855f7 !important;
+  box-shadow: 0 0 40px rgba(124,58,237,0.35) !important;
+}
+html.theme-holi .product-card-badge {
+  background: rgba(244,114,182,0.15) !important;
+  border-color: rgba(244,114,182,0.4) !important;
+  color: #f472b6 !important;
+}
+html.theme-holi .about-feature-dot {
+  background: linear-gradient(135deg, #f472b6, #fb923c) !important;
+  box-shadow: 0 0 10px rgba(244,114,182,0.6) !important;
+}
+html.theme-holi .cta-box {
+  background: linear-gradient(135deg, #1e0030, #2a0042) !important;
+  border-color: #7c3aed !important;
+}
+html.theme-holi .fc-icon,
+html.theme-holi .feature-icon,
+html.theme-holi .cic-icon,
+html.theme-holi .aic-icon {
+  background: linear-gradient(135deg, #4c1d95, #a855f7) !important;
+  box-shadow: 0 4px 20px rgba(124,58,237,0.45) !important;
+}
+
+/* ===================================
+   ██████╗██╗  ██╗██████╗ ██╗███████╗████████╗███╗  ███╗ █████╗ ███████╗
+   ██╔════╝██║  ██║██╔══██╗██║██╔════╝╚══██╔══╝████╗████║██╔══██╗██╔════╝
+   ██║     ███████║██████╔╝██║███████╗   ██║   ██╔████╔██║███████║███████╗
+   ██║     ██╔══██║██╔══██╗██║╚════██║   ██║   ██║╚██╔╝██║██╔══██║╚════██║
+   ╚██████╗██║  ██║██║  ██║██║███████║   ██║   ██║ ╚═╝ ██║██║  ██║███████║
+   =================================== */
+html.theme-christmas {
+  --primary:       #dc2626;
+  --primary-light: #ef4444;
+  --primary-dark:  #7f1d1d;
+  --accent:        #86efac;
+  --accent-hover:  #4ade80;
+  --gold:          #fcd34d;
+  --dark:          #020b04;
+  --dark-2:        #051207;
+  --dark-3:        #071a09;
+  --surface:       #0b250d;
+  --surface-2:     #0f3211;
+  --text-primary:  #f0fdf4;
+  --text-secondary:#86efac;
+  --text-muted:    #4ade80;
+  --border:        rgba(220,38,38,0.2);
+  --border-green:  rgba(220,38,38,0.35);
+  --shadow-green:  0 0 40px rgba(220,38,38,0.3);
+}
+html.theme-christmas body {
+  background: #020b04;
+  background-image:
+    radial-gradient(ellipse 80% 55% at 50% 0%, rgba(220,38,38,0.2) 0%, transparent 58%),
+    radial-gradient(ellipse 50% 45% at 15% 90%, rgba(11,37,13,0.6) 0%, transparent 55%),
+    radial-gradient(ellipse 40% 35% at 85% 60%, rgba(134,239,172,0.05) 0%, transparent 50%);
+}
+html.theme-christmas .hero-bg {
+  background:
+    radial-gradient(ellipse 70% 75% at 50% 0%, rgba(220,38,38,0.25) 0%, transparent 65%),
+    radial-gradient(ellipse 40% 40% at 80% 50%, rgba(134,239,172,0.07) 0%, transparent 50%) !important;
+}
+html.theme-christmas .bg-grid {
+  background-image:
+    linear-gradient(rgba(220,38,38,0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(220,38,38,0.07) 1px, transparent 1px);
+}
+/* Christmas board: deep red with green border + green chains */
+html.theme-christmas { --chain-color: #16a34a; }
+html.theme-christmas .fb-board {
+  background: linear-gradient(145deg, #3f0000 0%, #6b1515 40%, #4a0000 80%, #3f0000 100%) !important;
+  border-color: #22c55e !important;
+  box-shadow: 0 8px 30px rgba(220,38,38,0.5), 0 0 20px rgba(134,239,172,0.1), inset 0 1px 0 rgba(134,239,172,0.15), inset 0 -2px 0 rgba(0,0,0,0.5) !important;
+  --board-border: #22c55e;
+  --board-text: #86efac;
+}
+html.theme-christmas .fb-text { color: #86efac; text-shadow: 0 0 12px rgba(134,239,172,0.4), 0 1px 3px rgba(0,0,0,0.6) !important; }
+html.theme-christmas .fb-nail-head { background: radial-gradient(circle at 35% 30%, #86efac 0%, #16a34a 60%, rgba(0,0,0,0.4) 100%) !important; }
+html.theme-christmas .fb-screw { background: radial-gradient(circle at 35% 30%, #86efac, #16a34a, rgba(0,0,0,0.3)) !important; border-color: rgba(0,0,0,0.3) !important; }
+
+html.theme-christmas .section-title span,
+html.theme-christmas .nav-logo-name,
+html.theme-christmas .footer-logo-name,
+html.theme-christmas .hero-stat-value,
+html.theme-christmas .hero-title .line-2 {
+  background: linear-gradient(135deg, #fca5a5, #86efac) !important;
+  -webkit-background-clip: text !important; -webkit-text-fill-color: transparent !important; background-clip: text !important;
+}
+html.theme-christmas .btn-primary,
+html.theme-christmas .nav-cta {
+  background: linear-gradient(135deg, #7f1d1d, #dc2626) !important;
+  box-shadow: 0 4px 20px rgba(220,38,38,0.5) !important;
+}
+html.theme-christmas .btn-primary:hover { box-shadow: 0 8px 30px rgba(220,38,38,0.7) !important; }
+html.theme-christmas .section-tag {
+  background: rgba(134,239,172,0.1) !important;
+  border-color: rgba(134,239,172,0.35) !important;
+  color: #86efac !important;
+}
+html.theme-christmas .product-card:hover,
+html.theme-christmas .work-card:hover {
+  border-color: #dc2626 !important;
+  box-shadow: 0 0 40px rgba(220,38,38,0.3) !important;
+}
+html.theme-christmas .product-card-badge {
+  background: rgba(134,239,172,0.12) !important;
+  border-color: rgba(134,239,172,0.4) !important;
+  color: #86efac !important;
+}
+html.theme-christmas .about-feature-dot {
+  background: #ef4444 !important;
+  box-shadow: 0 0 10px rgba(220,38,38,0.6) !important;
+}
+html.theme-christmas .cta-box {
+  background: linear-gradient(135deg, #0b250d, #0f3211) !important;
+  border-color: #dc2626 !important;
+}
+html.theme-christmas .fc-icon,
+html.theme-christmas .feature-icon,
+html.theme-christmas .cic-icon,
+html.theme-christmas .aic-icon {
+  background: linear-gradient(135deg, #7f1d1d, #dc2626) !important;
+  box-shadow: 0 4px 20px rgba(220,38,38,0.4) !important;
+}
+html.theme-christmas .hero-logo-img,
+html.theme-christmas .about-logo-img {
+  box-shadow: 0 0 80px rgba(220,38,38,0.5), 0 0 160px rgba(220,38,38,0.15) !important;
+}
+
+/* ===================================
+   ███╗   ██╗███████╗██╗    ██╗    ██╗   ██╗███████╗ █████╗ ██████╗
+   ████╗  ██║██╔════╝██║    ██║    ╚██╗ ██╔╝██╔════╝██╔══██╗██╔══██╗
+   ██╔██╗ ██║█████╗  ██║ █╗ ██║     ╚████╔╝ █████╗  ███████║██████╔╝
+   ██║╚██╗██║██╔══╝  ██║███╗██║      ╚██╔╝  ██╔══╝  ██╔══██║██╔══██╗
+   ██║ ╚████║███████╗╚███╔███╔╝       ██║   ███████╗██║  ██║██║  ██║
+   =================================== */
+html.theme-newyear {
+  --primary:       #1d4ed8;
+  --primary-light: #3b82f6;
+  --primary-dark:  #1e3a8a;
+  --accent:        #ffd700;
+  --accent-hover:  #e5c100;
+  --gold:          #ffd700;
+  --dark:          #010614;
+  --dark-2:        #030c20;
+  --dark-3:        #05112d;
+  --surface:       #081836;
+  --surface-2:     #0c2248;
+  --text-primary:  #f0f4ff;
+  --text-secondary:#93c5fd;
+  --text-muted:    #60a5fa;
+  --border:        rgba(29,78,216,0.25);
+  --border-green:  rgba(29,78,216,0.4);
+  --shadow-green:  0 0 40px rgba(29,78,216,0.4);
+}
+html.theme-newyear body {
+  background: #010614;
+  background-image:
+    radial-gradient(ellipse 80% 55% at 50% -5%, rgba(29,78,216,0.3) 0%, transparent 58%),
+    radial-gradient(ellipse 50% 40% at 80% 70%, rgba(255,215,0,0.06) 0%, transparent 50%);
+}
+html.theme-newyear .hero-bg {
+  background:
+    radial-gradient(ellipse 70% 80% at 50% 0%, rgba(29,78,216,0.3) 0%, transparent 65%),
+    radial-gradient(ellipse 40% 40% at 80% 50%, rgba(255,215,0,0.08) 0%, transparent 50%) !important;
+}
+html.theme-newyear .bg-grid {
+  background-image:
+    linear-gradient(rgba(29,78,216,0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(29,78,216,0.07) 1px, transparent 1px);
+}
+/* New Year board: midnight blue + gold chains */
+html.theme-newyear { --chain-color: #ffd700; }
+html.theme-newyear .fb-board {
+  background: linear-gradient(145deg, #010a1f 0%, #0a1a40 45%, #050f28 100%) !important;
+  border-color: #ffd700 !important;
+  box-shadow: 0 8px 30px rgba(29,78,216,0.55), 0 0 20px rgba(255,215,0,0.15), inset 0 1px 0 rgba(255,215,0,0.18), inset 0 -2px 0 rgba(0,0,0,0.5) !important;
+  --board-border: #ffd700;
+  --board-text: #ffd700;
+}
+html.theme-newyear .fb-text { color: #ffd700; text-shadow: 0 0 16px rgba(255,215,0,0.5), 0 1px 3px rgba(0,0,0,0.6) !important; }
+html.theme-newyear .fb-nail-head { background: radial-gradient(circle at 35% 30%, #fde68a 0%, #b8942a 60%, rgba(0,0,0,0.4) 100%) !important; }
+html.theme-newyear .fb-screw { background: radial-gradient(circle at 35% 30%, #fde68a, #b8942a, rgba(0,0,0,0.3)) !important; }
+
+html.theme-newyear .section-title span,
+html.theme-newyear .nav-logo-name,
+html.theme-newyear .footer-logo-name,
+html.theme-newyear .hero-stat-value,
+html.theme-newyear .hero-title .line-2 {
+  background: linear-gradient(135deg, #60a5fa, #ffd700) !important;
+  -webkit-background-clip: text !important; -webkit-text-fill-color: transparent !important; background-clip: text !important;
+}
+html.theme-newyear .btn-primary,
+html.theme-newyear .nav-cta {
+  background: linear-gradient(135deg, #1e3a8a, #3b82f6) !important;
+  box-shadow: 0 4px 20px rgba(29,78,216,0.5) !important;
+}
+html.theme-newyear .section-tag {
+  background: rgba(255,215,0,0.1) !important;
+  border-color: rgba(255,215,0,0.35) !important;
+  color: #ffd700 !important;
+}
+html.theme-newyear .product-card:hover,
+html.theme-newyear .work-card:hover {
+  border-color: #3b82f6 !important;
+  box-shadow: 0 0 40px rgba(29,78,216,0.4) !important;
+}
+html.theme-newyear .product-card-badge {
+  background: rgba(255,215,0,0.12) !important;
+  border-color: rgba(255,215,0,0.4) !important;
+  color: #ffd700 !important;
+}
+html.theme-newyear .about-feature-dot {
+  background: #ffd700 !important;
+  box-shadow: 0 0 10px rgba(255,215,0,0.5) !important;
+}
+html.theme-newyear .cta-box {
+  background: linear-gradient(135deg, #081836, #0c2248) !important;
+  border-color: #1d4ed8 !important;
+}
+html.theme-newyear .fc-icon,
+html.theme-newyear .feature-icon,
+html.theme-newyear .cic-icon,
+html.theme-newyear .aic-icon {
+  background: linear-gradient(135deg, #1e3a8a, #3b82f6) !important;
+  box-shadow: 0 4px 20px rgba(29,78,216,0.45) !important;
+}
+html.theme-newyear .hero-logo-img,
+html.theme-newyear .about-logo-img {
+  box-shadow: 0 0 80px rgba(29,78,216,0.5), 0 0 160px rgba(255,215,0,0.1) !important;
+}
+
+/* ===================================
+   INDEPENDENCE DAY
+   =================================== */
+html.theme-independence {
+  --primary:       #ea580c;
+  --primary-light: #f97316;
+  --primary-dark:  #c2410c;
+  --accent:        #4ade80;
+  --accent-hover:  #22c55e;
+  --gold:          #fbbf24;
+  --dark:          #080400;
+  --dark-2:        #110800;
+  --dark-3:        #1a0f00;
+  --surface:       #211500;
+  --surface-2:     #2e1e00;
+  --text-primary:  #fff8f0;
+  --text-secondary:#fdba74;
+  --text-muted:    #f97316;
+  --border:        rgba(234,88,12,0.25);
+  --border-green:  rgba(234,88,12,0.4);
+  --shadow-green:  0 0 40px rgba(234,88,12,0.35);
+}
+html.theme-independence body {
+  background: #080400;
+  background-image:
+    radial-gradient(ellipse 80% 55% at 50% 0%, rgba(234,88,12,0.25) 0%, transparent 58%),
+    radial-gradient(ellipse 50% 40% at 80% 70%, rgba(19,136,8,0.1) 0%, transparent 50%);
+}
+html.theme-independence .hero-bg {
+  background:
+    radial-gradient(ellipse 65% 75% at 50% 0%, rgba(234,88,12,0.28) 0%, transparent 62%),
+    radial-gradient(ellipse 40% 40% at 80% 60%, rgba(19,136,8,0.08) 0%, transparent 50%) !important;
+}
+/* Independence Day board: saffron border + tricolor accent */
+html.theme-independence { --chain-color: #ff6600; }
+html.theme-independence .fb-board {
+  background: linear-gradient(145deg, #1a0a00 0%, #2e1500 45%, #1f0e00 100%) !important;
+  border-color: #ff6600 !important;
+  box-shadow: 0 8px 30px rgba(234,88,12,0.5), 0 0 20px rgba(74,222,128,0.1), inset 0 1px 0 rgba(255,102,0,0.2), inset 0 -2px 0 rgba(0,0,0,0.5) !important;
+  --board-border: #ff6600;
+  --board-text: #fff8f0;
+}
+html.theme-independence .fb-text { color: #fff8f0; text-shadow: 0 0 12px rgba(255,102,0,0.4), 0 1px 3px rgba(0,0,0,0.6) !important; }
+html.theme-independence .fb-nail-head { background: radial-gradient(circle at 35% 30%, #fde68a 0%, #ff6600 60%, rgba(0,0,0,0.4) 100%) !important; }
+html.theme-independence .fb-screw { background: radial-gradient(circle at 35% 30%, #fde68a, #ff6600, rgba(0,0,0,0.3)) !important; }
+
+html.theme-independence .section-title span,
+html.theme-independence .nav-logo-name,
+html.theme-independence .footer-logo-name,
+html.theme-independence .hero-stat-value,
+html.theme-independence .hero-title .line-2 {
+  background: linear-gradient(135deg, #fb923c, #4ade80) !important;
+  -webkit-background-clip: text !important; -webkit-text-fill-color: transparent !important; background-clip: text !important;
+}
+html.theme-independence .btn-primary,
+html.theme-independence .nav-cta {
+  background: linear-gradient(135deg, #c2410c, #f97316) !important;
+  box-shadow: 0 4px 20px rgba(234,88,12,0.5) !important;
+}
+html.theme-independence .section-tag {
+  background: rgba(74,222,128,0.1) !important;
+  border-color: rgba(74,222,128,0.35) !important;
+  color: #4ade80 !important;
+}
+html.theme-independence .product-card-badge {
+  background: rgba(251,191,36,0.12) !important;
+  border-color: rgba(251,191,36,0.4) !important;
+  color: #fbbf24 !important;
+}
+html.theme-independence .cta-box {
+  background: linear-gradient(135deg, #211500, #2e1e00) !important;
+  border-color: #ea580c !important;
+}
+
+/* ===================================
+   SHARED CARD GLOW - all themes
+   =================================== */
+html[class*="theme-"] .hero-logo-ring {
+  animation-duration: 15s !important;
+}
+html[class*="theme-"] .product-card-link { color: var(--primary-light) !important; }
+html[class*="theme-"] .intro-gst-badge { border-color: rgba(255,255,255,0.2) !important; }
+html[class*="theme-"] .gst-value.gold { color: var(--gold) !important; }
+html[class*="theme-"] .hero-badge { border-color: rgba(255,255,255,0.2) !important; color: var(--gold) !important; background: rgba(255,255,255,0.06) !important; }
+html[class*="theme-"] .footer-bottom { border-color: var(--border) !important; }
+html[class*="theme-"] .intro-logo { box-shadow: 0 0 60px var(--primary), 0 0 120px rgba(0,0,0,0.3) !important; }
+html[class*="theme-"] .intro-ring { border-color: var(--primary) !important; opacity: 0.5; }
+html[class*="theme-"] .intro-company-name {
+  background: linear-gradient(135deg, var(--primary-light), var(--accent)) !important;
+  -webkit-background-clip: text !important; -webkit-text-fill-color: transparent !important; background-clip: text !important;
+}
+html[class*="theme-"] .social-link:hover { border-color: var(--primary) !important; }
+html[class*="theme-"] .navbar.scrolled { border-bottom-color: var(--border) !important; }
+html[class*="theme-"] .btn-outline { border-color: var(--border) !important; }
+html[class*="theme-"] .btn-outline:hover { border-color: var(--primary) !important; color: var(--primary-light) !important; }

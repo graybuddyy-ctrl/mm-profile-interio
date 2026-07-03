@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Panel | MM Profile Interio</title>
+  <link rel="icon" type="image/png" href="assets/images/logo.png" />
+  <link rel="stylesheet" href="assets/css/admin.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body class="admin-body">
+
+  <!-- ===================== LOGIN OVERLAY ===================== -->
+  <div id="admin-login">
+    <div class="login-card">
+      <div class="login-logo">
+        <img src="assets/images/logo.png" alt="MM Profile Interio" />
+        <div class="login-logo-name">MM Profile Interio</div>
+      </div>
+      <h1 class="login-title">Admin Panel</h1>
+      <p class="login-sub">Sign in with your admin credentials to continue.</p>
+      <div class="login-error" id="login-error"></div>
+      <form id="login-form">
+        <div class="f-group">
+          <label class="f-label" for="login-username">Username or Email</label>
+          <input class="f-input" id="login-username" type="text" placeholder="admin" autocomplete="username" required />
+        </div>
+        <div class="f-group">
+          <label class="f-label" for="login-password">Password</label>
+          <input class="f-input" id="login-password" type="password" placeholder="••••••••" autocomplete="current-password" required />
+        </div>
+        <button type="submit" class="btn btn-green btn-full" style="margin-top:8px;">
+          <i class="fa-solid fa-right-to-bracket"></i> Sign In
+        </button>
+      </form>
+      <p style="text-align:center;margin-top:20px;font-size:0.78rem;color:var(--a-text3);">
+        Default: admin / admin123
+      </p>
+    </div>
+  </div>
+
+  <!-- ===================== SIDEBAR ===================== -->
+  <aside id="admin-sidebar">
+    <div class="sidebar-header">
+      <div class="sidebar-logo">
+        <img src="assets/images/logo.png" alt="MM Profile Interio" />
+        <div class="sidebar-logo-text">
+          <span class="sidebar-logo-name">MM Profile</span>
+          <span class="sidebar-logo-sub">Admin Panel</span>
+        </div>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">General</div>
+      <button class="nav-item active" data-panel="dashboard">
+        <i class="fa-solid fa-gauge-high"></i> Dashboard
+      </button>
+
+      <div class="nav-section-label">Content</div>
+      <button class="nav-item" data-panel="themes">
+        <i class="fa-solid fa-palette"></i> Festive Themes
+      </button>
+      <button class="nav-item" data-panel="products">
+        <i class="fa-solid fa-boxes-stacked"></i> Products
+        <span class="nav-badge" id="nav-products-count">6</span>
+      </button>
+      <button class="nav-item" data-panel="works">
+        <i class="fa-solid fa-images"></i> Our Works
+      </button>
+
+      <div class="nav-section-label">Administration</div>
+      <button class="nav-item" data-panel="users">
+        <i class="fa-solid fa-users"></i> Users
+        <span class="nav-badge" id="stat-users-count">1</span>
+      </button>
+
+      <div class="nav-section-label">Links</div>
+      <a href="index.html" target="_blank" class="nav-item">
+        <i class="fa-solid fa-arrow-up-right-from-square"></i> View Website
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="sidebar-user-avatar" id="sidebar-user-avatar">A</div>
+        <div>
+          <div class="sidebar-user-name" id="sidebar-user-name">Admin</div>
+          <div class="sidebar-user-role" id="sidebar-user-role">Administrator</div>
+        </div>
+      </div>
+      <button class="btn btn-ghost" style="width:100%;justify-content:center;" onclick="adminLogout()">
+        <i class="fa-solid fa-right-from-bracket"></i> Logout
+      </button>
+    </div>
+  </aside>
+
+  <!-- ===================== MAIN CONTENT ===================== -->
+  <div id="admin-main">
+    <!-- Topbar -->
+    <div class="admin-topbar">
+      <div style="display:flex;align-items:center;gap:14px;">
+        <button class="admin-mob-toggle" id="mob-sidebar-toggle"><i class="fa-solid fa-bars"></i></button>
+        <span class="topbar-title" id="topbar-title">Dashboard</span>
+      </div>
+      <div class="topbar-actions">
+        <a href="index.html" target="_blank" class="btn btn-ghost btn-sm">
+          <i class="fa-solid fa-eye"></i> View Site
+        </a>
+      </div>
+    </div>
+
+    <div class="admin-content">
+
+      <!-- ============ DASHBOARD PANEL ============ -->
+      <div class="panel active" id="panel-dashboard">
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon green"><i class="fa-solid fa-boxes-stacked" style="color:#4caf60;"></i></div>
+            <div>
+              <div class="stat-value" id="stat-products">6</div>
+              <div class="stat-label">Total Products</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon blue"><i class="fa-solid fa-images" style="color:#60a5fa;"></i></div>
+            <div>
+              <div class="stat-value" id="stat-works">0</div>
+              <div class="stat-label">Works Showcased</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon gold"><i class="fa-solid fa-users" style="color:var(--a-gold);"></i></div>
+            <div>
+              <div class="stat-value" id="stat-users">1</div>
+              <div class="stat-label">Admin Users</div>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon red"><i class="fa-solid fa-palette" style="color:#f87171;"></i></div>
+            <div>
+              <div class="stat-value" id="stat-theme" style="font-size:1.1rem;">Default</div>
+              <div class="stat-label">Active Theme</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-card">
+          <div class="section-card-header">
+            <span class="section-card-title"><i class="fa-solid fa-bolt" style="color:var(--a-accent);"></i> Quick Actions</span>
+          </div>
+          <div class="section-card-body" style="display:flex;gap:12px;flex-wrap:wrap;">
+            <button class="btn btn-green" onclick="showPanel('themes')"><i class="fa-solid fa-palette"></i> Change Theme</button>
+            <button class="btn btn-ghost" onclick="showPanel('products')"><i class="fa-solid fa-plus"></i> Add Product</button>
+            <button class="btn btn-ghost" onclick="showPanel('works')"><i class="fa-solid fa-image"></i> Add Work</button>
+            <button class="btn btn-ghost" onclick="showPanel('users')"><i class="fa-solid fa-user-plus"></i> Add User</button>
+            <a href="index.html" target="_blank" class="btn btn-ghost"><i class="fa-solid fa-eye"></i> View Website</a>
+          </div>
+        </div>
+
+        <div class="section-card">
+          <div class="section-card-header">
+            <span class="section-card-title"><i class="fa-solid fa-circle-info" style="color:var(--a-blue);"></i> Company Info</span>
+          </div>
+          <div class="section-card-body">
+            <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;">
+              <div><div style="font-size:0.7rem;color:var(--a-text3);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:4px;">Company</div><div style="font-weight:600;">MM Profile Interio</div></div>
+              <div><div style="font-size:0.7rem;color:var(--a-text3);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:4px;">GST Number</div><div style="font-weight:600;color:var(--a-gold);">29**********1ZX</div></div>
+              <div><div style="font-size:0.7rem;color:var(--a-text3);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:4px;">Business Type</div><div style="font-weight:600;">Manufacturer</div></div>
+              <div><div style="font-size:0.7rem;color:var(--a-text3);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:4px;">Legal Status</div><div style="font-weight:600;">Partnership Firm</div></div>
+              <div><div style="font-size:0.7rem;color:var(--a-text3);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:4px;">Employees</div><div style="font-weight:600;">Upto 10 People</div></div>
+              <div><div style="font-size:0.7rem;color:var(--a-text3);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:4px;">Est.</div><div style="font-weight:600;">2024</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============ FESTIVE THEMES PANEL ============ -->
+      <div class="panel" id="panel-themes">
+        <div class="section-card">
+          <div class="section-card-header">
+            <span class="section-card-title"><i class="fa-solid fa-palette" style="color:var(--a-accent);"></i> Festive Themes</span>
+            <span style="font-size:0.8rem;color:var(--a-text3);">Activate a theme to change site appearance</span>
+          </div>
+          <div class="section-card-body">
+            <div style="background:rgba(255,200,50,0.08);border:1px solid rgba(255,200,50,0.2);border-radius:10px;padding:12px 16px;margin-bottom:20px;font-size:0.85rem;color:#fcd34d;">
+              <i class="fa-solid fa-triangle-exclamation" style="margin-right:8px;"></i>
+              After activating a theme, <strong>refresh the website</strong> to see the changes live.
+            </div>
+            <div class="themes-grid" id="themes-grid">
+              <!-- Rendered by JS -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============ PRODUCTS PANEL ============ -->
+      <div class="panel" id="panel-products">
+        <div class="section-card">
+          <div class="section-card-header">
+            <span class="section-card-title"><i class="fa-solid fa-boxes-stacked" style="color:var(--a-primary-lt);"></i> All Products</span>
+            <button class="btn btn-green btn-sm" onclick="openModal('modal-product')">
+              <i class="fa-solid fa-plus"></i> Add Product
+            </button>
+          </div>
+          <div class="section-card-body" style="padding:0;overflow-x:auto;">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Image</th>
+                  <th>Name</th>
+                  <th>Description</th>
+                  <th>Badge</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="products-tbody">
+                <!-- Rendered by JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============ OUR WORKS PANEL ============ -->
+      <div class="panel" id="panel-works">
+        <div class="section-card">
+          <div class="section-card-header">
+            <span class="section-card-title"><i class="fa-solid fa-images" style="color:var(--a-blue);"></i> Our Works</span>
+            <button class="btn btn-green btn-sm" onclick="openModal('modal-work')">
+              <i class="fa-solid fa-plus"></i> Add Work
+            </button>
+          </div>
+          <div class="section-card-body">
+            <!-- Empty state -->
+            <div class="empty-state" id="works-admin-empty" style="display:none;">
+              <div class="empty-state-icon">🖼️</div>
+              <div class="empty-state-title">No Works Yet</div>
+              <p class="empty-state-desc">Add your completed project photos to showcase on the website.</p>
+              <button class="btn btn-green" onclick="openModal('modal-work')"><i class="fa-solid fa-plus"></i> Add First Work</button>
+            </div>
+            <div class="works-admin-grid" id="works-admin-grid">
+              <!-- Rendered by JS -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============ USERS PANEL ============ -->
+      <div class="panel" id="panel-users">
+        <div class="section-card">
+          <div class="section-card-header">
+            <span class="section-card-title"><i class="fa-solid fa-users" style="color:var(--a-gold);"></i> User Management</span>
+            <button class="btn btn-green btn-sm" onclick="openModal('modal-user')">
+              <i class="fa-solid fa-user-plus"></i> Add User
+            </button>
+          </div>
+          <div class="section-card-body" style="padding:0;overflow-x:auto;">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>User</th>
+                  <th>Role</th>
+                  <th>Created</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="users-tbody">
+                <!-- Rendered by JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="section-card">
+          <div class="section-card-header">
+            <span class="section-card-title"><i class="fa-solid fa-circle-info" style="color:var(--a-blue);"></i> Permissions Info</span>
+          </div>
+          <div class="section-card-body" style="display:flex;gap:20px;flex-wrap:wrap;">
+            <div style="display:flex;align-items:center;gap:10px;">
+              <span class="role-badge admin">👑 Admin</span>
+              <span style="font-size:0.85rem;color:var(--a-text3);">Full access to admin panel, all features.</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;">
+              <span class="role-badge user">👤 User</span>
+              <span style="font-size:0.85rem;color:var(--a-text3);">No admin panel access (reserved for future features).</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- end admin-content -->
+  </div><!-- end admin-main -->
+
+  <!-- ===================== MODALS ===================== -->
+
+  <!-- Banner Message Modal -->
+  <div class="modal-overlay" id="modal-banner">
+    <div class="modal">
+      <div class="modal-header">
+        <span class="modal-title">✏️ Edit Banner Message</span>
+        <button class="modal-close" onclick="closeModal('modal-banner')"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body">
+        <p style="color:var(--a-text3);font-size:0.85rem;margin-bottom:16px;">
+          Customise the banner shown at the top of the website for "<strong id="banner-theme-name">Theme</strong>".
+        </p>
+        <form id="form-banner">
+          <input type="hidden" id="banner-theme-id" />
+          <div class="f-group">
+            <label class="f-label" for="banner-msg">Banner Message</label>
+            <input class="f-input" id="banner-msg" type="text" placeholder="e.g. 🪔 Happy Diwali from MM Profile Interio!" maxlength="120" />
+          </div>
+          <div class="modal-footer" style="padding:0;border:none;margin-top:16px;">
+            <button type="button" class="btn btn-ghost" onclick="closeModal('modal-banner')">Cancel</button>
+            <button type="submit" class="btn btn-green"><i class="fa-solid fa-floppy-disk"></i> Save Message</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Product Modal -->
+  <div class="modal-overlay" id="modal-product">
+    <div class="modal">
+      <div class="modal-header">
+        <span class="modal-title">➕ Add New Product</span>
+        <button class="modal-close" onclick="closeModal('modal-product')"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body">
+        <form id="form-product">
+          <input type="hidden" id="p-img-data" data-img-target="true" />
+          <div class="f-group">
+            <label class="f-label" for="p-name">Product Name *</label>
+            <input class="f-input" id="p-name" type="text" placeholder="e.g. Frosted Glass Panel" maxlength="80" required />
+          </div>
+          <div class="f-group">
+            <label class="f-label" for="p-desc">Description *</label>
+            <textarea class="f-textarea" id="p-desc" placeholder="Brief description of the product..." maxlength="300" required></textarea>
+          </div>
+          <div class="f-group">
+            <label class="f-label" for="p-badge">Badge Label <span style="color:var(--a-text3);font-weight:400;">(optional)</span></label>
+            <input class="f-input" id="p-badge" type="text" placeholder="e.g. New Arrival, Best Seller" maxlength="20" />
+          </div>
+          <div class="f-group">
+            <label class="f-label">Product Image</label>
+            <div class="img-upload-area">
+              <input type="file" accept="image/*" />
+              <div class="img-upload-icon">🖼️</div>
+              <div class="img-upload-label">Click or drag & drop to upload</div>
+              <div class="img-upload-sub">JPG, PNG, WebP · Max 3MB</div>
+            </div>
+            <img class="img-preview" id="p-img-preview" alt="Product preview" />
+          </div>
+          <div class="modal-footer" style="padding:0;border:none;margin-top:4px;">
+            <button type="button" class="btn btn-ghost" onclick="closeModal('modal-product')">Cancel</button>
+            <button type="submit" class="btn btn-green"><i class="fa-solid fa-plus"></i> Add Product</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add Work Modal -->
+  <div class="modal-overlay" id="modal-work">
+    <div class="modal">
+      <div class="modal-header">
+        <span class="modal-title">🖼️ Add Work to Portfolio</span>
+        <button class="modal-close" onclick="closeModal('modal-work')"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body">
+        <form id="form-work">
+          <input type="hidden" id="w-img-data" data-img-target="true" />
+          <div class="f-group">
+            <label class="f-label" for="w-title">Project Title *</label>
+            <input class="f-input" id="w-title" type="text" placeholder="e.g. Modern Office Sliding Doors" maxlength="80" required />
+          </div>
+          <div class="f-group">
+            <label class="f-label" for="w-client">Client / Location <span style="color:var(--a-text3);font-weight:400;">(optional)</span></label>
+            <input class="f-input" id="w-client" type="text" placeholder="e.g. ABC Builders, Mumbai" maxlength="80" />
+          </div>
+          <div class="f-group">
+            <label class="f-label" for="w-desc">Brief Description <span style="color:var(--a-text3);font-weight:400;">(optional)</span></label>
+            <textarea class="f-textarea" id="w-desc" placeholder="Short description of the project..." maxlength="200"></textarea>
+          </div>
+          <div class="f-group">
+            <label class="f-label">Project Image *</label>
+            <div class="img-upload-area">
+              <input type="file" accept="image/*" />
+              <div class="img-upload-icon">📷</div>
+              <div class="img-upload-label">Click or drag & drop to upload</div>
+              <div class="img-upload-sub">JPG, PNG, WebP · Max 3MB</div>
+            </div>
+            <img class="img-preview" id="w-img-preview" alt="Work preview" />
+          </div>
+          <div class="modal-footer" style="padding:0;border:none;margin-top:4px;">
+            <button type="button" class="btn btn-ghost" onclick="closeModal('modal-work')">Cancel</button>
+            <button type="submit" class="btn btn-green"><i class="fa-solid fa-plus"></i> Add Work</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add User Modal -->
+  <div class="modal-overlay" id="modal-user">
+    <div class="modal">
+      <div class="modal-header">
+        <span class="modal-title">👤 Create New User</span>
+        <button class="modal-close" onclick="closeModal('modal-user')"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body">
+        <form id="form-user">
+          <div class="f-group">
+            <label class="f-label" for="u-username">Username *</label>
+            <input class="f-input" id="u-username" type="text" placeholder="e.g. manager1" maxlength="40" autocomplete="off" required />
+          </div>
+          <div class="f-group">
+            <label class="f-label" for="u-email">Email <span style="color:var(--a-text3);font-weight:400;">(optional)</span></label>
+            <input class="f-input" id="u-email" type="email" placeholder="user@example.com" maxlength="100" autocomplete="off" />
+          </div>
+          <div class="f-group">
+            <label class="f-label" for="u-password">Password *</label>
+            <input class="f-input" id="u-password" type="password" placeholder="Min 6 characters" minlength="6" required autocomplete="new-password" />
+          </div>
+          <div class="f-group" style="margin-top:4px;">
+            <label class="toggle-wrap">
+              <div class="toggle">
+                <input type="checkbox" id="u-admin" />
+                <span class="toggle-slider"></span>
+              </div>
+              <span class="toggle-label">Grant Admin Permissions</span>
+            </label>
+            <p style="font-size:0.75rem;color:var(--a-text3);margin-top:6px;margin-left:52px;">Admins can access this panel and manage all content.</p>
+          </div>
+          <div class="modal-footer" style="padding:0;border:none;margin-top:12px;">
+            <button type="button" class="btn btn-ghost" onclick="closeModal('modal-user')">Cancel</button>
+            <button type="submit" class="btn btn-green"><i class="fa-solid fa-user-plus"></i> Create User</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== CONFIRM DIALOG ===================== -->
+  <div class="confirm-overlay" id="confirm-dialog">
+    <div class="confirm-box">
+      <div class="confirm-icon">⚠️</div>
+      <div class="confirm-title" id="confirm-title">Are you sure?</div>
+      <p class="confirm-msg" id="confirm-msg">This action cannot be undone.</p>
+      <div class="confirm-actions">
+        <button class="btn btn-ghost" id="confirm-cancel">Cancel</button>
+        <button class="btn btn-red" id="confirm-ok"><i class="fa-solid fa-trash"></i> Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================== TOAST ===================== -->
+  <div id="toast-container"></div>
+
+  <!-- Firebase SDK (syncs theme to all visitors) -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+  <script src="assets/js/firebase-config.js"></script>
+  <script src="assets/js/firebase-db.js"></script>
+  <script src="assets/js/admin.js"></script>
+</body>
+</html>
